@@ -1,6 +1,38 @@
-<h1>Message board homepage</h1>
-<ul>
-    {% for post in all_posts_list %}
-        <li> {{post.text}}</li>
-    {% endfor %}
-</ul>
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load fontawesome_5 %}
+
+<head>
+    {% fontawesome_5_static %}
+    <title>Message Board App</title>
+</head>
+<body id="test">
+        <div class="container-fluid mt-3">
+            <div class="row gx-2 border-bottom border-info">
+                <div class="col p-2">
+                    {% load static %} <img src="{% static 'messageboard.jpg' %}" class="shadow img-thumbnail" width="200" height="200" alt="Message Logo" />
+                </div>
+                <div class="col mt-5 p-2 text-info">
+                    <h1>Message Board Homepage</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-5 mt-5 border-bottom border-info">
+            <div class="row g-4">
+                    {% for post in all_posts_list %}
+                        <div class="p-2">
+                            <div class="card shadow text-center" style="width: 18rem;">
+                                <div class="card-header">
+                                    Featured
+                                    <p class="">{% fa5_icon 'comment' 'fas' %}</p>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ post.text }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+            </div>
+        </div>
+</body>
